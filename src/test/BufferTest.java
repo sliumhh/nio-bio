@@ -1,5 +1,3 @@
-package main.java.com.sliumhh;
-
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 

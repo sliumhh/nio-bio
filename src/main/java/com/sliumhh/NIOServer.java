@@ -1,4 +1,4 @@
-package main.java.com.sliumhh;
+package com.sliumhh;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -79,7 +79,6 @@ public class NIOServer {
         socketChannel.register(selector, SelectionKey.OP_READ);
         // 回复客户端提示消息
         socketChannel.write(StandardCharsets.UTF_8.encode("您已进入聊天室......"));
-
     }
 
     /**
@@ -100,7 +99,9 @@ public class NIOServer {
         // 3. 将channel再次注册到selector上，监听其他可读事件
         socketChannel.register(selector, SelectionKey.OP_READ);
         // 4. 将客户端发送的请求信息广播给其他客户端
-        broadcast(selector, socketChannel, request.toString());
+        if (request.length() > 0) {
+            broadcast(selector, socketChannel, request.toString());
+        }
 
     }
 
